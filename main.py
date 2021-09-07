@@ -44,13 +44,15 @@ class Main:
         if user_select== 1:
             self.show_info()
         elif user_select == 2:
-            print(f.add_Video_Media())
+            self.add_Video_Media(self)
         elif user_select ==3:
-            pass
+             self.show_edit_menu(self)
         elif  user_select ==4:
-            pass
-        elif user_select == 5:
-            exit()
+            self.del_Video_Media(self)
+        elif user_select ==5:
+            self.search_Video_Media(self)    
+        elif user_select == 6:
+            self.save_and_exit_media(self)
         else:
             print("wrong input!")
     def show_info(self):
