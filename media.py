@@ -1,4 +1,3 @@
-import ast
 import pytube
 from pytube import YouTube
 
