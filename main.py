@@ -1,7 +1,7 @@
-import film
-import series
-import documentary
-import clip
+from film import Film
+from series import Series
+from documentary import Documentary
+from clip import Clip
 
 class Main:
     def __init__(self):
@@ -19,13 +19,13 @@ class Main:
             info= parts[i].split(",")
 
             if info[1] == "film":
-                self.list.append(film(info))
+                self.list.append(Film(info))
             elif info[1]== "series":
-                self.list.append(series(info))
+                self.list.append(Series(info))
             elif info[1]== "documentary":
-                self.list.append(documentary(info))
+                self.list.append(Documentary(info))
             elif info[1]== "clip":
-                self.list.append(clip(info))
+                self.list.append(Clip(info))
             else:
                 print("wronge data!")
             i=+1
@@ -78,13 +78,13 @@ class Main:
         info={"id":Add_id,"name":Add_name,"directore":Add_directore,"IMDB":Add_IMDB,"url":Add_url,"duration":Add_duration,"casts":Add_casts,"episod":Add_episod} 
         
         if self.categori == "film":
-                self.list.append(film(info))
+                self.list.append(Film(info))
         elif self.categori== "series":
-                self.list.append(series(info))
+                self.list.append(Series(info))
         elif self.categori== "documentary":
-                self.list.append(documentary(info))
+                self.list.append(Documentary(info))
         elif self.categori== "clip":
-                self.list.append(clip(info))
+                self.list.append(Clip(info))
         else:
                 print("wronge data!")
 
@@ -146,8 +146,37 @@ class Main:
                     else:
                         print("no input")
 
-
+    def del_Video_Media(self):
+        id= input("enter your id media for delete :")
         
+        for i in range(len(self.list)):
+            if self.list[i]["id"]==id:
+                self.list.pop(i)
+                print("hazf shod")
+                break
+
+    def search_Video_Media(self):
+    
+        user_keyword = input("your id media or name for jostojo :")
+
+        for i in range(len(self.list)):
+        
+           if self.list[i]['name'] == user_keyword or self.list[i]["id"]== user_keyword:
+            print(self.list[i])             
+
+    def save_and_exit_media(self):
+        filename= open("database.txt","w")
+       # r=0
+        for i in range(len(self.list)):
+            row = (self.list[i]["id"] + ',' + self.name[i]["categori"] + "," + self.list[i]["name"] 
+            + ',' + self.list[i]["director"] + ',' + self.list[i]["IMDB"] + ',' + self.list[i]["url"] 
+            + ',' + self.list[i]["duration"] + ',' + self.list[i]["casts"] + ',' + self.list[i]["episod"])
+            filename.write(row)
+        #    r=r+1
+        #    if r<len(PRODUCTION):
+        #        my_file.write("\n")
+        filename.close()
+        exit()    
 f=Main()
 
 
