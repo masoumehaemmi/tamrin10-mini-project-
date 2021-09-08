@@ -48,29 +48,30 @@ class Main:
         if user_select== 1:
             self.show_info()
         elif user_select == 2:
-            self.add_Video_Media(self)
+            self.add_Video_Media()
         elif user_select ==3:
-             self.show_edit_menu(self)
+             self.show_edit_menu()
         elif  user_select ==4:
-            self.del_Video_Media(self)
+            self.del_Video_Media()
         elif user_select ==5:
-            self.search_Video_Media(self) 
+            self.search_Video_Media() 
         elif user_select == 6:
-            self.search_duration_Media(self)
+            self.search_duration_Media()
         elif user_select == 7:
-            self.actor_Video_Media(self)
+            self.actor_Video_Media()
         elif user_select == 8:
-            self.download_Video_Media(self)
+            self.download_Video_Media()
         elif user_select == 9:
-            self.save_and_exit_media(self)
+            self.save_and_exit_media()
         else:
             print("wrong input!")
     
     def show(self):
+        self.show()
 
     def show_info(self):
         for i in range (len(self.list)):
-          self.show(self)
+          self.show()
             
 
         self.show_menu()
@@ -219,5 +220,6 @@ class Main:
         filename.close()
         exit()    
 f=Main()
- 
-  
+
+
+    
