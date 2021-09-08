@@ -28,17 +28,21 @@ class Main:
                 self.list.append(Clip(info))
             else:
                 print("wronge data!")
-            i=+1
+            i+=1
 
         #print(self.list)
         self.show_menu()
 
     def show_menu(self):
-        print("1-enter show list: ")
+        print("1-enter your  show list: ")
         print("2-enter your add Video media: ")
         print("3-enter your edit Video media: ")
-        print("4-enter your search Video media : ")
-        print("5-enter your exit: ")
+        print("4-enter your delete Video media : ")
+        print("5- enter your search video media ")
+        print("6- enter your search  douration video media : ")
+        print("7- enter your actor video media : ")
+        print("8- enter your download video media")
+        print("9-enter your save and exit video media: ")
 
         user_select=int(input("enter a select number : "))
         if user_select== 1:
@@ -50,16 +54,29 @@ class Main:
         elif  user_select ==4:
             self.del_Video_Media(self)
         elif user_select ==5:
-            self.search_Video_Media(self)    
+            self.search_Video_Media(self) 
         elif user_select == 6:
+            self.search_duration_Media(self)
+        elif user_select == 7:
+            self.actor_Video_Media(self)
+        elif user_select == 8:
+            self.download_Video_Media(self)
+        elif user_select == 9:
             self.save_and_exit_media(self)
         else:
             print("wrong input!")
+    
+    def show(self):
+
     def show_info(self):
-        for i in len(self.list):
-            self.show(self)
+        for i in range (len(self.list)):
+          self.show(self)
+            
 
         self.show_menu()
+    
+    
+
     def add_Video_Media(self):
 
         Add_id=input("enter your id media :")
@@ -77,7 +94,7 @@ class Main:
         elif self.series=="series":
             Add_casts=input("enter your casts :")
             Add_episod=input("enter your episod series :")
-        info={"id":Add_id,"name":Add_name,"directore":Add_directore,"IMDB":Add_IMDB,"url":Add_url,"duration":Add_duration,"casts":Add_casts,"episod":Add_episod} 
+        info={"id":Add_id,"categori":Add_categori,"name":Add_name,"directore":Add_directore,"IMDB":Add_IMDB,"url":Add_url,"duration":Add_duration,"casts":Add_casts,"episod":Add_episod} 
         
         if self.categori == "film":
                 self.list.append(Film(info))
@@ -89,7 +106,7 @@ class Main:
                 self.list.append(Clip(info))
         else:
                 print("wronge data!")
-
+        self.add_Video_Media()
         self.show_menu()
         
     def show_edit_menu(self):
@@ -166,6 +183,28 @@ class Main:
            if self.list[i]['name'] == user_keyword or self.list[i]["id"]== user_keyword:
             print(self.list[i])             
 
+    def search_duration_Media(self):
+        dur=input("enter your duration video media : ")
+        dur1=input("enter your duration video media : ")
+        i=0
+        for info in self.list:
+            if info.categori=="film" and dur<= info.duration <=dur1:
+                print(i,info.name)
+                i+=1
+    
+    def actor_Video_Media(self):
+        actor=input("enter your name actor video media : ")
+        for i in self.list:
+            if actor== self.name:
+                self.casts()
+                break
+    def download_Video_Media(self):
+        download=input("enter your link video media : ")
+        for i in self.list:
+            if download==self.url:
+                self.download()
+                break
+
     def save_and_exit_media(self):
         filename= open("database.txt","w")
        # r=0
@@ -180,6 +219,5 @@ class Main:
         filename.close()
         exit()    
 f=Main()
-
-
-    
+ 
+  
